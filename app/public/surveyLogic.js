@@ -20,9 +20,9 @@ $("#formSubmit").on("click", function(){
 		return validation;
 	};
 
-	if(formValidation == true){
+	if(formValidation() == true){
 
-		var newUser = {
+		var newFriend = {
 			name: $("#name").val().trim(),
 			photo: $("#photo").val().trim(),
 			scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
@@ -30,8 +30,12 @@ $("#formSubmit").on("click", function(){
 
 		var currentURL = window.location.origin;
 
-		$.post(currentURL + "/api/friends/", newUser, function(data){
-
+		$.post(currentURL + "/api/friends/", newFriend, function(data){
+			
 		});
+	}else{
+		alert("Please fill out all the information.");
 	};
+
+	return false;
 });
